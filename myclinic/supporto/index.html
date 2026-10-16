@@ -1,378 +1,743 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
 
-<title>MyClinic — Assistenza e supporto</title>
+  <title>MyClinic — Assistenza e supporto</title>
 
-<meta name="description"
-content="Assistenza e supporto per MyClinic, gestionale professionale per l'attività clinica.">
+  <meta
+    name="description"
+    content="Assistenza ufficiale MyClinic. Informazioni e supporto per il gestionale professionale dedicato all'attività clinica."
+  >
 
-<style>
-:root {
-  color-scheme: light;
-  --text: #17283c;
-  --muted: #64778a;
-  --blue: #0879e7;
-  --border: rgba(58, 108, 149, .13);
-  --card: rgba(255, 255, 255, .86);
-  --shadow: 0 18px 55px rgba(32, 86, 135, .09);
-}
+  <style>
 
-* {
-  box-sizing: border-box;
-}
+    /* ==============================
+       MYCLINIC — DESIGN SYSTEM
+       ============================== */
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont,
-               "SF Pro Display", "Segoe UI", sans-serif;
-  color: var(--text);
+    :root {
+      color-scheme: light;
 
-  background:
-    radial-gradient(
-      ellipse at 15% 5%,
-      rgba(136, 206, 255, .45),
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse at 90% 75%,
-      rgba(154, 233, 229, .22),
-      transparent 50%
-    ),
-    #f0f7fc;
-}
+      --background: #f1f7fc;
+      --background-secondary: #e8f3fb;
 
-.container {
-  width: min(100% - 40px, 760px);
-  margin: 0 auto;
-  padding: 72px 0 35px;
-}
+      --text: #1b3046;
+      --text-secondary: #657c91;
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 72px;
-}
+      --accent: #167bdb;
+      --accent-hover: #0868c2;
 
-.logo {
-  position: relative;
-  width: 58px;
-  height: 58px;
-  flex-shrink: 0;
-  border-radius: 17px;
-  background: linear-gradient(145deg, #40aaff, #0873da);
-  box-shadow: 0 8px 24px rgba(0, 114, 225, .19);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  color: white;
-  font-size: 29px;
-  font-weight: 700;
-}
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-secondary: rgba(255, 255, 255, 0.48);
 
-.logo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+      --border: rgba(94, 151, 194, 0.18);
 
-.brand-name {
-  font-size: 25px;
-  font-weight: 750;
-  letter-spacing: -.7px;
-}
+      --shadow:
+        0 16px 50px rgba(45, 96, 143, 0.07),
+        0 2px 8px rgba(45, 96, 143, 0.03);
 
-.brand-subtitle {
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 13px;
-}
+      --radius: 24px;
+    }
 
-.eyebrow {
-  display: inline-block;
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 750;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-h1 {
-  font-size: clamp(34px, 6vw, 49px);
-  font-weight: 760;
-  letter-spacing: -1.8px;
-  line-height: 1.1;
-  margin: 0 0 20px;
-}
+    html {
+      min-height: 100%;
+    }
 
-.intro {
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--muted);
-  max-width: 580px;
-  margin-bottom: 40px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 25px;
-  box-shadow: var(--shadow);
-  padding: 34px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-.card h2 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  letter-spacing: -.5px;
-}
+      -webkit-font-smoothing: antialiased;
 
-.card p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.75;
-  margin: 0 0 25px;
-}
+      color: var(--text);
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 15px 23px;
-  background: var(--blue);
-  color: white;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 650;
-  text-decoration: none;
-  transition: transform .15s, background .15s;
-}
+      background:
+        radial-gradient(
+          ellipse at 8% 0%,
+          rgba(128, 199, 247, 0.36),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 100% 85%,
+          rgba(135, 217, 212, 0.21),
+          transparent 48%
+        ),
+        linear-gradient(
+          160deg,
+          var(--background),
+          var(--background-secondary)
+        );
+    }
 
-.button:hover {
-  background: #0063c7;
-  transform: translateY(-2px);
-}
+    a {
+      color: var(--accent);
+    }
 
-.button:focus-visible {
-  outline: 3px solid #70baff;
-  outline-offset: 4px;
-}
+    /* ==============================
+       LAYOUT
+       ============================== */
 
-.email {
-  display: block;
-  margin-top: 20px;
-  font-size: 13px;
-  color: var(--muted);
-  overflow-wrap: anywhere;
-}
+    .container {
+      width: min(100% - 40px, 760px);
+      margin: 0 auto;
+      padding: 58px 0 32px;
+    }
 
-.notice {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  padding: 22px 24px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: rgba(255,255,255,.43);
-}
+    /* ==============================
+       BRAND
+       ============================== */
 
-.notice-icon {
-  font-size: 19px;
-  color: var(--blue);
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 78px;
+    }
 
-.notice strong {
-  display: block;
-  margin-bottom: 7px;
-  font-size: 14px;
-}
+    .brand-mark {
+      width: 58px;
+      height: 58px;
 
-.notice p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.65;
-}
+      flex-shrink: 0;
 
-footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 65px;
-  padding-top: 22px;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 12px;
-}
+      display: grid;
+      place-items: center;
 
-footer a {
-  color: inherit;
-  text-decoration: none;
-}
+      border-radius: 18px;
 
-footer a:hover {
-  color: var(--blue);
-}
+      background:
+        linear-gradient(
+          145deg,
+          #75ceff 0%,
+          #2b9be9 48%,
+          #126fc4 100%
+        );
 
-@media (max-width: 600px) {
-  .container {
-    padding-top: 38px;
-  }
+      box-shadow:
+        0 8px 24px rgba(37, 119, 197, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.38);
 
-  .brand {
-    margin-bottom: 55px;
-  }
+      color: #ffffff;
 
-  .card {
-    padding: 25px;
-    border-radius: 21px;
-  }
-}
+      font-size: 30px;
+      font-weight: 750;
+      letter-spacing: -1.5px;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  .button {
-    transition: none;
-  }
-}
+    .brand-name {
+      font-size: 25px;
+      font-weight: 750;
+      letter-spacing: -0.9px;
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --text: #eef5ff;
-    --muted: #a5b5c8;
-    --blue: #329dff;
-    --border: rgba(170, 209, 255, .12);
-    --card: rgba(27, 40, 57, .88);
-    --shadow: 0 18px 55px rgba(0, 0, 0, .19);
-  }
+    .brand-description {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
 
-  body {
-    background:
-      radial-gradient(
-        ellipse at 15% 5%,
-        rgba(30, 91, 143, .32),
-        transparent 55%
-      ),
-      #101a28;
-  }
+    /* ==============================
+       INTRODUZIONE
+       ============================== */
 
-  .notice {
-    background: rgba(27, 40, 57, .55);
-  }
-}
-</style>
+    .eyebrow {
+      display: inline-block;
+
+      margin-bottom: 14px;
+
+      color: var(--accent);
+
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+
+      font-size: clamp(35px, 6vw, 51px);
+      font-weight: 760;
+      letter-spacing: -1.9px;
+      line-height: 1.12;
+    }
+
+    .intro {
+      max-width: 590px;
+
+      margin: 0 0 42px;
+
+      color: var(--text-secondary);
+
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ==============================
+       CARD ASSISTENZA
+       ============================== */
+
+    .card {
+      padding: 36px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 15px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      background: rgba(22, 123, 219, 0.09);
+      color: var(--accent);
+    }
+
+    .card h2 {
+      margin: 0;
+
+      font-size: 22px;
+      font-weight: 720;
+      letter-spacing: -0.6px;
+    }
+
+    .card p {
+      margin: 0 0 26px;
+
+      font-size: 15px;
+      line-height: 1.8;
+
+      color: var(--text-secondary);
+    }
+
+    /* ==============================
+       PULSANTE ASSISTENZA
+       ============================== */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      min-height: 50px;
+      padding: 14px 24px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #248ee7,
+          #116fca
+        );
+
+      color: #ffffff;
+
+      font-size: 15px;
+      font-weight: 650;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 5px 14px rgba(22, 123, 219, 0.16);
+
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 20px rgba(22, 123, 219, 0.23);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .email {
+      display: block;
+
+      margin-top: 21px;
+
+      color: var(--text-secondary);
+
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    /* ==============================
+       INFORMATIVA PRIVACY
+       ============================== */
+
+    .privacy-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+
+      margin-top: 20px;
+      padding: 24px 26px;
+
+      background: var(--surface-secondary);
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .privacy-icon {
+      width: 28px;
+      height: 28px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--accent);
+    }
+
+    .privacy-notice strong {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .privacy-notice p {
+      margin: 0;
+
+      color: var(--text-secondary);
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* ==============================
+       FOOTER
+       ============================== */
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-top: 70px;
+      padding-top: 24px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--text-secondary);
+
+      font-size: 12px;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ==============================
+       IPHONE / SCHERMI PICCOLI
+       ============================== */
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(100% - 32px, 760px);
+        padding-top: 32px;
+      }
+
+      .brand {
+        margin-bottom: 60px;
+      }
+
+      .brand-mark {
+        width: 52px;
+        height: 52px;
+
+        border-radius: 16px;
+        font-size: 27px;
+      }
+
+      .brand-name {
+        font-size: 23px;
+      }
+
+      .intro {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .card {
+        padding: 26px;
+        border-radius: 21px;
+      }
+
+      .card h2 {
+        font-size: 20px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .privacy-notice {
+        padding: 20px;
+      }
+
+      footer {
+        margin-top: 55px;
+      }
+    }
+
+    /* ==============================
+       DARK MODE
+       ============================== */
+
+    @media (prefers-color-scheme: dark) {
+
+      :root {
+        color-scheme: dark;
+
+        --background: #101b2b;
+        --background-secondary: #17283b;
+
+        --text: #edf5ff;
+        --text-secondary: #a5b6c9;
+
+        --accent: #67b8ff;
+        --accent-hover: #8bcaff;
+
+        --surface: rgba(29, 44, 63, 0.89);
+        --surface-secondary: rgba(29, 44, 63, 0.53);
+
+        --border: rgba(151, 196, 236, 0.14);
+
+        --shadow:
+          0 16px 55px rgba(0, 0, 0, 0.18);
+      }
+
+      body {
+        background:
+          radial-gradient(
+            ellipse at 8% 0%,
+            rgba(36, 103, 157, 0.26),
+            transparent 52%
+          ),
+          radial-gradient(
+            ellipse at 100% 85%,
+            rgba(29, 99, 119, 0.12),
+            transparent 45%
+          ),
+          linear-gradient(
+            155deg,
+            var(--background),
+            var(--background-secondary)
+          );
+      }
+
+      .brand-mark {
+        background:
+          linear-gradient(
+            145deg,
+            #429fdf 0%,
+            #2479be 50%,
+            #18548f 100%
+          );
+
+        box-shadow:
+          0 8px 24px rgba(0, 0, 0, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .card-icon {
+        background: rgba(103, 184, 255, 0.12);
+      }
+
+      .button {
+        background:
+          linear-gradient(
+            135deg,
+            #2079c9,
+            #145da8
+          );
+
+        color: #ffffff;
+      }
+
+      .button:hover {
+        background:
+          linear-gradient(
+            135deg,
+            #298adc,
+            #196ab9
+          );
+      }
+    }
+
+    /* ==============================
+       ACCESSIBILITÀ
+       ============================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .button {
+        transition: none;
+      }
+
+      .button:hover {
+        transform: none;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <header class="brand">
+    <!-- INTESTAZIONE -->
 
-    <div class="logo">
-      M
-      <img
-        src="logo.png"
-        alt=""
-        onerror="this.style.display='none'"
-      >
-    </div>
+    <header class="brand">
 
-    <div>
-      <div class="brand-name">MyClinic</div>
-      <div class="brand-subtitle">
-        Gestione professionale dell'attività clinica
+      <div class="brand-mark" aria-hidden="true">
+        M
       </div>
-    </div>
-
-  </header>
-
-  <main>
-
-    <span class="eyebrow">Supporto</span>
-
-    <h1>
-      Come possiamo<br>
-      aiutarti?
-    </h1>
-
-    <p class="intro">
-      Hai bisogno di assistenza o desideri
-      segnalare un problema con MyClinic?
-      Puoi contattarci direttamente tramite email.
-    </p>
-
-    <section class="card">
-
-      <h2>Contatta l'assistenza</h2>
-
-      <p>
-        Per domande, problemi tecnici o segnalazioni
-        relative all'utilizzo di MyClinic,
-        scrivi al nostro indirizzo di supporto.
-      </p>
-
-      <a class="button"
-         href="mailto:figurativa-uragano6x@icloud.com?subject=MyClinic%20-%20Richiesta%20di%20assistenza">
-
-        <svg width="19" height="19"
-             viewBox="0 0 24 24"
-             fill="none" stroke="currentColor"
-             stroke-width="1.8"
-             aria-hidden="true">
-          <rect x="3" y="5" width="18"
-                height="14" rx="3"/>
-          <path d="m4 7 8 6 8-6"/>
-        </svg>
-
-        Scrivi all'assistenza
-
-      </a>
-
-      <span class="email">
-        figurativa-uragano6x@icloud.com
-      </span>
-
-    </section>
-
-    <aside class="notice">
-
-      <div class="notice-icon" aria-hidden="true">ⓘ</div>
 
       <div>
-        <strong>La privacy prima di tutto</strong>
 
-        <p>
-          Per proteggere la riservatezza dei pazienti,
-          non inviare tramite email dati clinici,
-          fotografie, referti o documenti contenenti
-          informazioni sanitarie identificabili.
-        </p>
+        <div class="brand-name">
+          MyClinic
+        </div>
+
+        <div class="brand-description">
+          Gestione professionale dell'attività clinica
+        </div>
+
       </div>
 
-    </aside>
+    </header>
 
-  </main>
+    <!-- CONTENUTO PRINCIPALE -->
 
-  <footer>
-    <span>© 2026 MyClinic</span>
-    <span>Assistenza e supporto</span>
-  </footer>
+    <main>
 
-</div>
+      <span class="eyebrow">
+        Assistenza e supporto
+      </span>
+
+      <h1>
+        Come possiamo<br>
+        aiutarti?
+      </h1>
+
+      <p class="intro">
+        Hai bisogno di assistenza, desideri
+        ricevere informazioni o segnalare
+        un problema relativo a MyClinic?
+        Siamo a disposizione per aiutarti.
+      </p>
+
+      <!-- CARD CONTATTO -->
+
+      <section class="card">
+
+        <div class="card-heading">
+
+          <div class="card-icon" aria-hidden="true">
+
+            <svg
+              width="23"
+              height="23"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="3"
+              />
+
+              <path d="m4 7 8 6 8-6" />
+
+            </svg>
+
+          </div>
+
+          <h2>
+            Contatta l'assistenza
+          </h2>
+
+        </div>
+
+        <p>
+          Per domande, difficoltà tecniche
+          o segnalazioni riguardanti
+          l'utilizzo di MyClinic,
+          puoi scrivere direttamente
+          al nostro indirizzo di supporto.
+        </p>
+
+        <a
+          class="button"
+          href="mailto:figurativa-uragano6x@icloud.com?subject=MyClinic%20-%20Richiesta%20di%20assistenza"
+        >
+
+          <svg
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="3"
+            />
+
+            <path d="m4 7 8 6 8-6" />
+
+          </svg>
+
+          Scrivi all'assistenza
+
+        </a>
+
+        <span class="email">
+          figurativa-uragano6x@icloud.com
+        </span>
+
+      </section>
+
+      <!-- AVVISO PRIVACY -->
+
+      <aside class="privacy-notice">
+
+        <div class="privacy-icon" aria-hidden="true">
+
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+
+            <path
+              d="M12 3 4.5 6v5.5c0 4.5 3 7.7 7.5 9.5 4.5-1.8 7.5-5 7.5-9.5V6L12 3Z"
+            />
+
+            <path d="M12 10v4" />
+
+            <path d="M12 7.5h.01" />
+
+          </svg>
+
+        </div>
+
+        <div>
+
+          <strong>
+            La riservatezza prima di tutto
+          </strong>
+
+          <p>
+            Per proteggere la privacy dei pazienti,
+            ti chiediamo di non inviare tramite email
+            dati clinici, fotografie, referti,
+            documenti sanitari o altre informazioni
+            personali identificabili.
+          </p>
+
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <span>
+        © 2026 MyClinic
+      </span>
+
+      <span>
+        Assistenza e supporto
+      </span>
+
+    </footer>
+
+  </div>
 
 </body>
 </html>
