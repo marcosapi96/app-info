@@ -7,4 +7,4 @@ delle applicazioni.
 
 [Assistenza e supporto](https://marcosapi96.github.io/app-info/myclinic/supporto/)
 
-[Assistenza e supporto](https://marcosapi96.github.io/app-info/myclinic/privacy/)
+[Privacy](https://marcosapi96.github.io/app-info/myclinic/privacy/)
