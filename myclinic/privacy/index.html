@@ -1,943 +1,129 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-
-  <title>MyClinic — Privacy e trattamento dei dati</title>
-
-  <meta
-    name="description"
-    content="Informazioni sulla privacy e sul trattamento dei dati nell'applicazione MyClinic."
-  >
-
-  <style>
-
-    /* ========================================
-       MYCLINIC — IDENTITÀ VISIVA CONDIVISA
-       ======================================== */
-
-    :root {
-      color-scheme: light;
-
-      --background: #f4f8fc;
-      --background-end: #eaf4fa;
-
-      --text: #1c3043;
-      --muted: #596f83;
-
-      --brand: #1379bd;
-      --accent: #147dcc;
-
-      --surface: rgba(255, 255, 255, 0.94);
-      --surface-soft: rgba(255, 255, 255, 0.55);
-
-      --border: rgba(91, 151, 194, 0.18);
-
-      --shadow:
-        0 14px 44px rgba(31, 87, 131, 0.07);
-
-      --font:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      min-height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      font-family: var(--font);
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.65;
-
-      color: var(--text);
-
-      -webkit-font-smoothing: antialiased;
-
-      background:
-        radial-gradient(
-          ellipse at 5% 0%,
-          rgba(127, 199, 244, 0.27),
-          transparent 48%
-        ),
-        radial-gradient(
-          ellipse at 95% 95%,
-          rgba(113, 208, 208, 0.15),
-          transparent 45%
-        ),
-        linear-gradient(
-          155deg,
-          var(--background),
-          var(--background-end)
-        );
-    }
-
-    a {
-      color: var(--accent);
-      text-underline-offset: 3px;
-    }
-
-    a:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-      border-radius: 3px;
-    }
-
-    /* ========================================
-       CONTENITORE
-       ======================================== */
-
-    .container {
-      width: min(calc(100% - 40px), 720px);
-      margin: 0 auto;
-      padding: 72px 0 32px;
-    }
-
-    /* ========================================
-       INTESTAZIONE MYCLINIC
-       ======================================== */
-
-    .site-header {
-      padding-bottom: 34px;
-      margin-bottom: 48px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .brand {
-      margin: 0;
-
-      font-size: 46px;
-      font-weight: 700;
-      letter-spacing: -2px;
-      line-height: 1.1;
-
-      color: var(--brand);
-    }
-
-    .brand-description {
-      margin: 12px 0 0;
-
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.6;
-
-      color: var(--muted);
-    }
-
-    /* ========================================
-       GERARCHIA TIPOGRAFICA
-       ======================================== */
-
-    h1,
-    h2,
-    p {
-      overflow-wrap: break-word;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.9px;
-      line-height: 1.2;
-    }
-
-    h2 {
-      margin: 0 0 16px;
-
-      font-size: 21px;
-      font-weight: 600;
-      letter-spacing: -0.4px;
-      line-height: 1.35;
-    }
-
-    .intro {
-      margin: 0 0 35px;
-
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.75;
-
-      color: var(--muted);
-    }
-
-    /* ========================================
-       DOCUMENTO PRIVACY
-       ======================================== */
-
-    .policy-document {
-      padding: 36px;
-
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-
-      box-shadow: var(--shadow);
-    }
-
-    .policy-section + .policy-section {
-      margin-top: 35px;
-      padding-top: 35px;
-      border-top: 1px solid var(--border);
-    }
-
-    .policy-section p {
-      margin: 0 0 16px;
-
-      font-size: 16px;
-      line-height: 1.8;
-
-      color: var(--muted);
-    }
-
-    .policy-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .policy-section strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* ========================================
-       AVVISO BOZZA
-       ======================================== */
-
-    .draft-notice {
-      margin-bottom: 28px;
-      padding: 20px 24px;
-
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 15px;
-
-      background: var(--surface-soft);
-    }
-
-    .draft-notice strong {
-      display: block;
-      margin-bottom: 7px;
-
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .draft-notice p {
-      margin: 0;
-
-      font-size: 15px;
-      line-height: 1.7;
-
-      color: var(--muted);
-    }
-
-    /* ========================================
-       CONTATTI E LINK
-       ======================================== */
-
-    .contact-link {
-      display: inline-block;
-      overflow-wrap: anywhere;
-    }
-
-    .links-section {
-      margin-top: 24px;
-      padding: 26px 30px;
-
-      background: var(--surface-soft);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .links-section h2 {
-      margin-bottom: 14px;
-    }
-
-    .links-section p {
-      margin: 0 0 14px;
-
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .links-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ========================================
-       FOOTER
-       ======================================== */
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-
-      margin-top: 58px;
-      padding-top: 22px;
-
-      border-top: 1px solid var(--border);
-
-      font-size: 14px;
-      font-weight: 400;
-
-      color: var(--muted);
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    /* ========================================
-       IPHONE
-       ======================================== */
-
-    @media (max-width: 600px) {
-
-      .container {
-        width: min(calc(100% - 32px), 720px);
-        padding-top: 38px;
-      }
-
-      .site-header {
-        padding-bottom: 28px;
-        margin-bottom: 36px;
-      }
-
-      .brand {
-        font-size: 39px;
-        letter-spacing: -1.7px;
-      }
-
-      .brand-description {
-        font-size: 15px;
-      }
-
-      h1 {
-        font-size: 29px;
-      }
-
-      .intro {
-        margin-bottom: 28px;
-      }
-
-      .policy-document {
-        padding: 27px 24px;
-        border-radius: 19px;
-      }
-
-      .policy-section + .policy-section {
-        margin-top: 30px;
-        padding-top: 30px;
-      }
-
-      .draft-notice {
-        padding: 19px 21px;
-      }
-
-      .links-section {
-        padding: 23px 24px;
-      }
-
-      footer {
-        margin-top: 44px;
-      }
-    }
-
-    /* ========================================
-       DARK MODE
-       ======================================== */
-
-    @media (prefers-color-scheme: dark) {
-
-      :root {
-        color-scheme: dark;
-
-        --background: #101c2a;
-        --background-end: #182b3d;
-
-        --text: #edf5fb;
-        --muted: #b0c1d0;
-
-        --brand: #79c5fb;
-        --accent: #82c7fb;
-
-        --surface: rgba(30, 45, 62, 0.96);
-        --surface-soft: rgba(30, 45, 62, 0.64);
-
-        --border: rgba(150, 193, 225, 0.16);
-
-        --shadow:
-          0 14px 44px rgba(0, 0, 0, 0.15);
-      }
-
-      body {
-        background:
-          radial-gradient(
-            ellipse at 5% 0%,
-            rgba(32, 95, 145, 0.24),
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 95% 95%,
-            rgba(30, 102, 118, 0.11),
-            transparent 45%
-          ),
-          linear-gradient(
-            155deg,
-            var(--background),
-            var(--background-end)
-          );
-      }
-    }
-
-    /* ========================================
-       ACCESSIBILITÀ
-       ======================================== */
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>MyClinic — Privacy e trattamento dei dati</title>
+<meta name="description" content="Informativa privacy MyClinic versione 0.9, in revisione.">
+<style>
+:root { color-scheme: light; --background:#f4f8fc;--background-end:#eaf4fa;--text:#1c3043;--muted:#596f83;--brand:#1379bd;--accent:#147dcc;--surface:rgba(255,255,255,.94);--surface-soft:rgba(255,255,255,.55);--border:rgba(91,151,194,.18);--shadow:0 14px 44px rgba(31,87,131,.07);--font:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif }
+* {box-sizing:border-box} html {min-height:100%;scroll-behavior:smooth} body{margin:0;min-height:100vh;font-family:var(--font);font-size:16px;font-weight:400;line-height:1.65;color:var(--text);-webkit-font-smoothing:antialiased;background:radial-gradient(ellipse at 5% 0%,rgba(127,199,244,.27),transparent 48%),radial-gradient(ellipse at 95% 95%,rgba(113,208,208,.15),transparent 45%),linear-gradient(155deg,var(--background),var(--background-end))}
+a{color:var(--accent);text-underline-offset:3px} a:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:3px} .container{width:min(calc(100% - 40px),720px);margin:0 auto;padding:72px 0 32px}.site-header{padding-bottom:34px;margin-bottom:48px;border-bottom:1px solid var(--border)} .brand{margin:0;font-size:46px;font-weight:700;letter-spacing:-2px;line-height:1.1;color:var(--brand)}.brand-description{margin:12px 0 0;font-size:16px;line-height:1.6;color:var(--muted)}
+h1,h2,p{overflow-wrap:break-word} h1{margin:0 0 16px;font-size:32px;font-weight:700;letter-spacing:-.9px;line-height:1.2}h2{margin:0 0 14px;font-size:21px;font-weight:600;letter-spacing:-.4px;line-height:1.35}.intro{max-width:620px;margin:0 0 36px;font-size:16px;line-height:1.75;color:var(--muted)}
+.policy-document,.support-card{padding:36px;border:1px solid var(--border);border-radius:22px;background:var(--surface);box-shadow:var(--shadow)}.policy-section+.policy-section{margin-top:35px;padding-top:35px;border-top:1px solid var(--border)}.policy-section p,.support-card p{margin:0 0 16px;font-size:16px;line-height:1.8;color:var(--muted)}.policy-section p:last-child{margin-bottom:0}
+.draft-notice,.privacy-notice,.links-section{margin-bottom:28px;padding:20px 24px;border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:15px;background:var(--surface-soft)}.draft-notice strong{display:block;margin-bottom:7px;font-size:16px;font-weight:600}.draft-notice p,.privacy-notice p{margin:0;font-size:15px;line-height:1.7;color:var(--muted)}.links-section{margin-top:24px;border-left:1px solid var(--border)}.links-section p{margin:0 0 12px;font-size:16px;line-height:1.7;color:var(--muted)}.links-section p:last-child{margin:0}
+.support-button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 24px;border-radius:13px;background:linear-gradient(135deg,#2188d1,#126eb8);color:#fff;font-weight:600;text-decoration:none;box-shadow:0 5px 16px rgba(20,125,204,.15)}.support-button:hover{background:linear-gradient(135deg,#147ac3,#0c61a5)}.email-address{display:inline-block;font-weight:500;overflow-wrap:anywhere}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:58px;padding-top:22px;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}footer a{color:inherit;text-decoration:none} footer a:hover{color:var(--accent);text-decoration:underline}
+@media(max-width:600px){.container{width:min(calc(100% - 32px),720px);padding-top:38px}.site-header{padding-bottom:28px;margin-bottom:36px}.brand{font-size:39px}.brand-description{font-size:15px}h1{font-size:29px}.intro{margin-bottom:28px}.policy-document,.support-card{padding:27px 24px;border-radius:19px}.policy-section+.policy-section{margin-top:30px;padding-top:30px}.support-button{width:100%}footer{margin-top:44px}}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--background:#101c2a;--background-end:#182b3d;--text:#edf5fb;--muted:#b0c1d0;--brand:#79c5fb;--accent:#82c7fb;--surface:rgba(30,45,62,.96);--surface-soft:rgba(30,45,62,.64);--border:rgba(150,193,225,.16);--shadow:0 14px 44px rgba(0,0,0,.15)}body{background:radial-gradient(ellipse at 5% 0%,rgba(32,95,145,.24),transparent 50%),radial-gradient(ellipse at 95% 95%,rgba(30,102,118,.11),transparent 45%),linear-gradient(155deg,var(--background),var(--background-end))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
-
 <body>
-
-  <div class="container">
-
-    <!-- INTESTAZIONE -->
-
-    <header class="site-header">
-
-      <div class="brand">
-        MyClinic
-      </div>
-
-      <p class="brand-description">
-        Gestione professionale dell'attività clinica
-      </p>
-
-    </header>
-
-    <!-- CONTENUTO -->
-
-    <main>
-
-      <h1>
-        Privacy e trattamento dei dati
-      </h1>
-
-      <p class="intro">
-        Informazioni sul funzionamento di MyClinic,
-        sui dati gestiti dall'applicazione e sulle
-        modalità di conservazione e protezione.
-      </p>
-
-      <!-- STATO DEL DOCUMENTO -->
-
-      <div class="draft-notice" role="note">
-
-        <strong>
-          Documento in fase di revisione
-        </strong>
-
-        <p>
-          Questa informativa descrive il funzionamento
-          attualmente verificato di MyClinic.
-          Il testo è una bozza da completare e approvare
-          prima della pubblicazione dell'applicazione.
-          Non costituisce una dichiarazione automatica
-          di conformità alla normativa applicabile.
-        </p>
-
-      </div>
-
-      <!-- INFORMATIVA -->
-
-      <article class="policy-document">
-
-        <section class="policy-section">
-
-          <h2>
-            Ambito dell'informativa
-          </h2>
-
-          <p>
-            Questa informativa riguarda la privacy
-            dell'applicazione MyClinic e descrive
-            come il software gestisce le informazioni
-            durante il proprio funzionamento.
-          </p>
-
-          <p>
-            È distinta dall'informativa sul trattamento
-            dei dati personali che il medico o il
-            professionista sanitario deve fornire
-            ai propri pazienti nell'ambito
-            della propria attività professionale.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Funzionamento dell'applicazione
-          </h2>
-
-          <p>
-            MyClinic è un gestionale professionale
-            per l'organizzazione dell'attività clinica.
-          </p>
-
-          <p>
-            L'applicazione può funzionare anche offline
-            e utilizza un archivio di file scelto
-            dall'utente.
-          </p>
-
-          <p>
-            Le funzionalità disponibili possono variare
-            in base alla piattaforma utilizzata,
-            alle autorizzazioni concesse
-            e alla posizione selezionata
-            per l'archivio.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Tipologie di dati gestiti
-          </h2>
-
-          <p>
-            In base alle funzionalità utilizzate,
-            MyClinic può gestire dati anagrafici
-            e di contatto, informazioni cliniche,
-            appuntamenti, fotografie, documenti,
-            referti, consensi e informazioni
-            economiche relative all'attività
-            professionale.
-          </p>
-
-          <p>
-            Tali contenuti possono comprendere
-            dati personali e categorie particolari
-            di dati, incluse informazioni
-            relative alla salute.
-          </p>
-
-          <p>
-            Il professionista deve inserire
-            e conservare esclusivamente
-            le informazioni necessarie
-            e appropriate per le finalità
-            della propria attività.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Archivio e conservazione
-          </h2>
-
-          <p>
-            I dati clinici vengono conservati
-            nell'archivio selezionato dall'utente.
-          </p>
-
-          <p>
-            La destinazione può essere locale
-            oppure gestita da un File Provider,
-            secondo le possibilità consentite
-            dall'applicazione e dal sistema operativo.
-          </p>
-
-          <p>
-            La disponibilità, la protezione,
-            la conservazione e il backup
-            dell'archivio dipendono anche
-            dalla configurazione del dispositivo
-            e dalla destinazione scelta.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Trasmissione dei dati allo sviluppatore
-          </h2>
-
-          <p>
-            In base alla verifica corrente del progetto,
-            MyClinic non utilizza server clinici
-            gestiti dallo sviluppatore,
-            sistemi pubblicitari di analisi
-            dell'utilizzo o infrastrutture proprie
-            dello sviluppatore per raccogliere
-            i dati clinici contenuti nell'archivio.
-          </p>
-
-          <p>
-            Questo non significa che nessun dato
-            possa lasciare il dispositivo.
-          </p>
-
-          <p>
-            Una destinazione gestita da un servizio
-            esterno, la sincronizzazione
-            di un calendario, un backup di sistema
-            o un'esportazione avviata dall'utente
-            possono comportare trattamenti
-            o trasferimenti di informazioni
-            da parte dei relativi servizi.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Provider esterni e sincronizzazione
-          </h2>
-
-          <p>
-            Se l'utente seleziona una cartella gestita
-            da un provider cloud o da un altro
-            File Provider, la conservazione
-            e l'eventuale sincronizzazione dei file
-            possono dipendere dal servizio scelto,
-            dal relativo account e dalle condizioni
-            e misure di sicurezza del provider.
-          </p>
-
-          <p>
-            MyClinic non dichiara che una specifica
-            soluzione di archiviazione esterna
-            sia stata approvata da Apple
-            per il trattamento di dati sanitari.
-          </p>
-
-          <p>
-            Il professionista deve valutare
-            l'idoneità del provider e della
-            configurazione rispetto agli obblighi
-            applicabili alla propria attività.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Integrazione con Apple Calendar
-          </h2>
-
-          <p>
-            Nelle versioni dell'applicazione
-            che prevedono questa funzionalità,
-            l'integrazione facoltativa
-            con Apple Calendar può pubblicare
-            informazioni sugli appuntamenti
-            nel calendario scelto dall'utente.
-          </p>
-
-          <p>
-            L'accesso al calendario richiede
-            l'autorizzazione prevista
-            dal sistema operativo.
-          </p>
-
-          <p>
-            L'eventuale sincronizzazione
-            degli eventi dipende dal provider
-            del calendario e dalla configurazione
-            dell'account.
-          </p>
-
-          <p>
-            Il professionista deve scegliere
-            con attenzione le informazioni
-            inserite negli eventi
-            e il calendario utilizzato.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Sicurezza e controllo degli accessi
-          </h2>
-
-          <p>
-            MyClinic utilizza i controlli di accesso
-            e le protezioni messe a disposizione
-            dal sistema operativo.
-          </p>
-
-          <p>
-            La sicurezza effettiva dipende anche
-            dalla protezione del dispositivo,
-            degli account, dell'archivio selezionato,
-            dei backup e degli eventuali
-            provider esterni.
-          </p>
-
-          <p>
-            <strong>La funzione App Lock</strong>
-            limita l'accesso all'interfaccia
-            dell'applicazione, ma non equivale
-            alla cifratura integrale
-            dell'archivio clinico.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Conservazione, Cestino e cancellazione
-          </h2>
-
-          <p>
-            La gestione dei dati presenti
-            nell'archivio è controllata
-            dal professionista.
-          </p>
-
-          <p>
-            Quando una funzione dell'applicazione
-            sposta un elemento nel Cestino
-            recuperabile di MyClinic,
-            l'elemento resta disponibile
-            per il ripristino finché non viene
-            eliminato secondo il flusso previsto.
-          </p>
-
-          <p>
-            L'eliminazione eseguita nell'applicazione
-            riguarda la copia gestita
-            nell'archivio corrente.
-          </p>
-
-          <p>
-            Non comporta necessariamente
-            la cancellazione di copie esportate,
-            backup, versioni conservate
-            dal file system o copie presenti
-            presso provider esterni.
-          </p>
-
-          <p>
-            Il professionista deve gestire
-            separatamente tali copie
-            e rispettare i periodi
-            di conservazione applicabili.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Responsabilità del professionista
-          </h2>
-
-          <p>
-            Il medico o altro professionista
-            che utilizza MyClinic determina
-            finalità, contenuti, modalità
-            di utilizzo e tempi di conservazione
-            dei dati dei pazienti.
-          </p>
-
-          <p>
-            È sua responsabilità gestire
-            tali informazioni secondo
-            la normativa applicabile,
-            le regole professionali
-            e gli eventuali accordi
-            con fornitori esterni.
-          </p>
-
-          <p>
-            Questa informativa dell'applicazione
-            non sostituisce l'informativa
-            che il professionista deve fornire
-            ai propri pazienti.
-          </p>
-
-          <p>
-            Non sostituisce inoltre
-            le valutazioni, le nomine,
-            le misure organizzative
-            o gli altri adempimenti richiesti
-            nel caso concreto.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Assistenza
-          </h2>
-
-          <p>
-            Per ricevere assistenza
-            relativa a MyClinic è possibile
-            contattare:
-          </p>
-
-          <p>
-            <a
-              class="contact-link"
-              href="mailto:figurativa-uragano6x@icloud.com?subject=MyClinic%20-%20Richiesta%20di%20assistenza"
-            >
-              figurativa-uragano6x@icloud.com
-            </a>
-          </p>
-
-          <p>
-            Per proteggere la riservatezza
-            dei pazienti, non inviare tramite email
-            dati clinici, fotografie di pazienti,
-            documenti sanitari, archivi,
-            log contenenti dati personali,
-            identificativi dei pazienti
-            o altre informazioni
-            sanitarie identificabili.
-          </p>
-
-          <p>
-            Descrivere eventuali problemi
-            utilizzando preferibilmente
-            informazioni tecniche non personali
-            e dati di esempio.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Identificazione del distributore
-          </h2>
-
-          <p>
-            Prima della pubblicazione definitiva
-            di MyClinic saranno completati
-            e verificati i dati identificativi
-            del soggetto che distribuisce
-            l'applicazione e gli eventuali
-            recapiti richiesti.
-          </p>
-
-          <p>
-            La scelta della forma di iscrizione
-            all'Apple Developer Program
-            è attualmente in attesa
-            di chiarimento da parte di Apple.
-          </p>
-
-        </section>
-
-        <section class="policy-section">
-
-          <h2>
-            Aggiornamenti dell'informativa
-          </h2>
-
-          <p>
-            Il contenuto di questa informativa
-            può essere aggiornato per riflettere
-            modifiche verificate
-            dell'applicazione, dei servizi
-            utilizzati o delle informazioni
-            del distributore.
-          </p>
-
-          <p>
-            La versione definitiva sarà approvata
-            prima della pubblicazione
-            di MyClinic sull'App Store.
-          </p>
-
-        </section>
-
-      </article>
-
-      <!-- COLLEGAMENTI -->
-
-      <section class="links-section">
-
-        <h2>
-          Hai bisogno di assistenza?
-        </h2>
-
-        <p>
-          Per domande o problemi tecnici
-          puoi consultare la pagina
-          dedicata al supporto.
-        </p>
-
-        <p>
-          <a href="../supporto/">
-            Assistenza e supporto MyClinic
-          </a>
-        </p>
-
-      </section>
-
-    </main>
-
-    <!-- FOOTER -->
-
-    <footer>
-
-      <span>
-        MyClinic · 2026
-      </span>
-
-      <a href="../supporto/">
-        Assistenza e supporto
-      </a>
-
-    </footer>
-
-  </div>
-
+<div class="container">
+<header class="site-header">
+<div class="brand">MyClinic</div>
+<p class="brand-description">Gestione professionale dell'attività clinica</p>
+</header>
+<main>
+<h1>Privacy e trattamento dei dati</h1>
+<p class="intro">Informazioni sul funzionamento di MyClinic, sulla gestione dei dati e sui servizi informativi e di assistenza.</p>
+<div class="draft-notice" role="note"><strong>Versione 0.9 — In revisione per la pubblicazione</strong><p>Le informazioni tecniche sono state aggiornate il 17 ottobre 2026. Alcuni dati identificativi e le condizioni relative all'archiviazione cloud sono ancora da convalidare prima della distribuzione sull'App Store.</p></div>
+<article class="policy-document">
+<section class="policy-section">
+<h2>Versione e ambito</h2>
+<p>Versione 0.9 — revisione preparatoria del 17 ottobre 2026. Il testo è stato redatto sulla base del funzionamento verificabile del progetto MyClinic e richiede ancora la validazione dei dati identificativi del distributore, dei trattamenti relativi all&#x27;assistenza e delle condizioni per l&#x27;eventuale utilizzo di iCloud Drive con dati sanitari. Non costituisce, allo stato, una dichiarazione di conformità GDPR né un&#x27;approvazione da parte di Apple.</p>
+<p>Questa informativa descrive il funzionamento di MyClinic, applicazione destinata a professionisti sanitari, e i trattamenti connessi alle comunicazioni volontarie di assistenza e alle pagine informative pubbliche. È distinta dall&#x27;informativa che il professionista sanitario deve fornire ai pazienti per i trattamenti effettuati nell&#x27;esercizio della propria attività.</p>
+</section>
+<section class="policy-section">
+<h2>Soggetti e ruoli</h2>
+<p>Nell&#x27;utilizzo ordinario, quando il medico determina finalità e modalità del trattamento dei dati dei propri pazienti, è il professionista a operare come titolare del relativo trattamento, secondo il contesto concreto. La semplice distribuzione del software non attribuisce automaticamente allo sviluppatore la titolarità delle cartelle cliniche conservate negli archivi degli utilizzatori.</p>
+<p>Il distributore di MyClinic rimane responsabile dei trattamenti di dati personali che effettua direttamente, per esempio quando riceve una richiesta di assistenza. Le qualificazioni di titolare, responsabile del trattamento o altro ruolo devono essere valutate in base alle attività effettivamente svolte, non soltanto alle descrizioni contenute in questa informativa.</p>
+<p>L&#x27;identità legale, la qualità e i recapiti del soggetto distributore devono essere completati e verificati prima della distribuzione. Il contatto già previsto per le richieste di assistenza tecnica è figurativa-uragano6x@icloud.com; non è ancora formalmente identificato un distinto recapito per l&#x27;esercizio dei diritti privacy verso il distributore.</p>
+</section>
+<section class="policy-section">
+<h2>Dati gestiti nell&#x27;archivio clinico</h2>
+<p>In base alle funzioni utilizzate, MyClinic permette di registrare dati identificativi e di contatto di pazienti e professionisti, cartelle e attività cliniche, appuntamenti, fotografie, immagini e relativi metadati, documenti, referti, consensi, informazioni economiche, note e altri file scelti dall&#x27;utente.</p>
+<p>Queste informazioni possono comprendere categorie particolari di dati personali, inclusi dati relativi alla salute. Il medico è tenuto a valutare liceità, necessità, pertinenza, minimizzazione e tempi di conservazione in relazione alla propria attività professionale.</p>
+</section>
+<section class="policy-section">
+<h2>Archivio scelto dall&#x27;utente e dati tecnici locali</h2>
+<p>MyClinic segue un&#x27;impostazione file-first: l&#x27;archivio clinico principale risiede in una cartella selezionata dall&#x27;utente, compatibilmente con le funzioni consentite dalla piattaforma. La cartella può trovarsi sul dispositivo o essere gestita da un File Provider. MyClinic non impone un account clinico remoto dello sviluppatore per utilizzare le funzioni di archiviazione locale.</p>
+<p>Oltre ai contenuti dell&#x27;archivio selezionato, il software può mantenere sul dispositivo indici derivati, cache e anteprime tecniche, preferenze, riferimenti di accesso alle cartelle, foto del profilo professionale e file temporanei necessari a importazione, elaborazione, esportazione o condivisione. Su iOS, i contenuti destinati alla Share Extension possono transitare temporaneamente nell&#x27;App Group condiviso con l&#x27;app. La presenza di questi dati locali non comporta, di per sé, una trasmissione allo sviluppatore.</p>
+<p>I dati conservati sul dispositivo possono essere soggetti alle funzioni di backup, ripristino e sincronizzazione del sistema operativo in base alla posizione dei file e alle impostazioni dell&#x27;utente. Un archivio locale non deve quindi essere confuso con una garanzia assoluta che ogni sua copia resti sempre sul solo dispositivo.</p>
+</section>
+<section class="policy-section">
+<h2>Funzionamento offline e assenza di un backend clinico dello sviluppatore</h2>
+<p>Le funzioni principali di consultazione e gestione dell&#x27;archivio possono operare senza collegamento a Internet. Nella versione esaminata, MyClinic non integra un server clinico gestito dal distributore, un account cloud MyClinic, SDK pubblicitari o sistemi propri di analytics che raccolgano i contenuti delle cartelle cliniche.</p>
+<p>Non significa che nessun dato possa mai lasciare il dispositivo: il sistema operativo, un File Provider scelto dall&#x27;utente, un calendario sincronizzato, un servizio di backup, un&#x27;esportazione o una comunicazione avviata dall&#x27;utente possono comportare trasferimenti o trattamenti da parte di terzi.</p>
+</section>
+<section class="policy-section">
+<h2>Cartelle cloud e File Provider</h2>
+<p>Se il professionista seleziona una cartella gestita da iCloud Drive o da un diverso File Provider, i file possono essere conservati, trasferiti e sincronizzati secondo le impostazioni dell&#x27;account e le condizioni del servizio scelto. MyClinic non dispone di un backend clinico intermedio che renda automaticamente conformi tali servizi al trattamento di dati sanitari.</p>
+<p>La scelta della destinazione e la valutazione del fornitore spettano al professionista, nei limiti del ruolo che ricopre, ma non eliminano gli obblighi applicabili allo sviluppatore né quelli del provider. Quando richiesto, il titolare deve valutare misure di sicurezza, contratti, ruoli e trasferimenti internazionali prima di utilizzare servizi esterni per dati dei pazienti.</p>
+<p>L&#x27;ammissibilità della conservazione di informazioni sanitarie personali in iCloud è ancora oggetto di verifica rispetto alla linea guida Apple App Review 5.1.3(ii). La disponibilità di una cartella nel selettore di sistema non costituisce un&#x27;autorizzazione di Apple a usarla per dati sanitari. Prima di tale chiarimento, l&#x27;utilizzo di iCloud Drive per questi contenuti non deve essere considerato approvato per la distribuzione sull&#x27;App Store.</p>
+</section>
+<section class="policy-section">
+<h2>Accesso ai dati e misure di sicurezza</h2>
+<p>L&#x27;accesso ai dati dipende dalle autorizzazioni del dispositivo e del file system, dalla sicurezza della destinazione di archiviazione e dalle eventuali impostazioni di protezione dell&#x27;app. L&#x27;utente deve proteggere dispositivi, credenziali, cartelle, copie esportate e backup e limitare gli accessi ai soggetti autorizzati.</p>
+<p>La funzione App Lock serve a limitare l&#x27;accesso all&#x27;interfaccia di MyClinic. Non equivale alla cifratura integrale dell&#x27;archivio, dei file esportati o dei backup. Non viene dichiarata una protezione crittografica autonoma dell&#x27;intero archivio clinico oltre a quella eventualmente offerta dai sistemi e dai provider utilizzati.</p>
+</section>
+<section class="policy-section">
+<h2>Fotografie, documenti e condivisione</h2>
+<p>Quando il professionista utilizza funzioni disponibili come Fotocamera, selezione di immagini, scanner documentale, importazione da File o Share Extension, MyClinic accede ai contenuti scelti e alle autorizzazioni concesse, nei limiti previsti dal sistema operativo. I file importati possono essere copiati nell&#x27;archivio selezionato; durante il trasferimento possono essere create copie temporanee sul dispositivo.</p>
+<p>L&#x27;utente deve verificare i contenuti prima di importarli, condividerli o esportarli. Immagini e documenti possono includere metadati personali o sensibili; non viene garantita una rimozione universale di tali metadati.</p>
+</section>
+<section class="policy-section">
+<h2>Integrazione facoltativa con Calendario</h2>
+<p>Sulle piattaforme che supportano questa funzione, MyClinic può creare o aggiornare eventi nel calendario scelto dal professionista, previo accesso autorizzato tramite le funzioni native del sistema operativo. Nell&#x27;implementazione attualmente esaminata, il titolo di un evento può includere nome e cognome del paziente e la categoria dell&#x27;appuntamento (per esempio &#x27;Chirurgia&#x27; o &#x27;Medicina estetica&#x27;). Queste informazioni possono identificare la persona e rivelare il contesto sanitario della prenotazione.</p>
+<p>Se il calendario scelto è sincronizzato con servizi esterni, gli eventi possono essere trattati dal relativo provider e resi accessibili ad altri dispositivi o soggetti secondo la configurazione dell&#x27;account. Prima di usare calendari condivisi o cloud, il professionista deve valutare la riservatezza delle informazioni inserite.</p>
+</section>
+<section class="policy-section">
+<h2>Elaborazioni e funzioni di assistenza locali</h2>
+<p>MyClinic può eseguire sul dispositivo operazioni tecniche di indicizzazione, ordinamento, classificazione e consultazione dei dati presenti nell&#x27;archivio. Su Mac compatibili, una funzione facoltativa di selezione di passaggi dalle note usa il modello di sistema Apple Foundation Models configurato per l&#x27;elaborazione locale; non richiede un servizio di intelligenza artificiale gestito dal distributore.</p>
+<p>Queste elaborazioni non sostituiscono il giudizio clinico del professionista. Eventuali funzioni del sistema operativo o dei servizi Apple restano soggette alle relative condizioni e informative.</p>
+</section>
+<section class="policy-section">
+<h2>Esportazione e comunicazioni volontarie</h2>
+<p>Le funzioni di esportazione, condivisione, stampa o apertura di documenti in altre applicazioni possono trasferire i file a una destinazione scelta dall&#x27;utente o a un servizio di sistema. Il professionista deve verificare destinatari, contenuti, autorizzazioni e adeguatezza dei canali utilizzati prima di condividere dati dei pazienti.</p>
+<p>L&#x27;app non invia automaticamente documenti clinici all&#x27;indirizzo dell&#x27;assistenza. Il comando di contatto apre il programma email con destinatario e oggetto preimpostati; il contenuto del messaggio e gli eventuali allegati dipendono dalle scelte dell&#x27;utente.</p>
+</section>
+<section class="policy-section">
+<h2>Conservazione, Cestino e cancellazione</h2>
+<p>I dati dell&#x27;archivio restano nella destinazione scelta finché vengono conservati o eliminati attraverso le funzioni dell&#x27;app, del file system o del provider. Gli elementi spostati nel Cestino recuperabile dell&#x27;app possono rimanere disponibili fino alla loro eliminazione secondo il flusso previsto. Cache tecniche e file temporanei seguono meccanismi di gestione distinti dall&#x27;archivio principale.</p>
+<p>La cancellazione dalla cartella corrente non assicura l&#x27;eliminazione di versioni precedenti, copie esportate, allegati email, backup, copie presenti su altri dispositivi o versioni trattenute dal provider. Il professionista deve gestire tali copie secondo le proprie esigenze di conservazione e gli obblighi applicabili.</p>
+</section>
+<section class="policy-section">
+<h2>Assistenza e comunicazioni ricevute dal distributore</h2>
+<p>Chi scrive all&#x27;indirizzo figurativa-uragano6x@icloud.com comunica volontariamente il proprio indirizzo email e le informazioni inserite nel messaggio. Tali informazioni possono essere trattate dal gestore della casella e dai fornitori di posta coinvolti nella trasmissione, per consentire la ricezione e la risposta. Non esiste nel software un caricamento automatico dei fascicoli clinici verso questa casella.</p>
+<p>Non inviare identificativi dei pazienti, cartelle cliniche, fotografie sanitarie, referti, archivi né log contenenti dati personali. Per segnalazioni tecniche è preferibile utilizzare descrizioni generali, screenshot opportunamente oscurati e dati di esempio inventati. Se una comunicazione contiene inaspettatamente dati personali o sanitari, il distributore dovrà gestirla secondo gli obblighi applicabili e limitarne l&#x27;utilizzo alle finalità strettamente necessarie.</p>
+<p>La finalità prevista del trattamento delle comunicazioni di supporto è rispondere alle richieste e gestire eventuali problemi tecnici o di sicurezza; la base giuridica e i criteri definitivi di conservazione devono essere validati prima della pubblicazione. In questa fase non viene indicato un termine numerico di conservazione che non sia stato stabilito e attuato.</p>
+</section>
+<section class="policy-section">
+<h2>Sito informativo e GitHub Pages</h2>
+<p>Le pagine pubbliche di Privacy e Assistenza di MyClinic sono pagine statiche ospitate su GitHub Pages. Nel codice di queste pagine non sono previsti moduli di raccolta di dati clinici, script pubblicitari, analytics aggiunti dal distributore o cookie impostati direttamente dal codice della pagina.</p>
+<p>Quando una persona visita il sito, GitHub, in qualità di fornitore del servizio di hosting, può trattare dati tecnici di connessione e di utilizzo, secondo la propria informativa privacy: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a> . L&#x27;eventuale trattamento da parte dell&#x27;hosting non deve essere confuso con una raccolta di cartelle cliniche da parte dell&#x27;app.</p>
+</section>
+<section class="policy-section">
+<h2>Diritti e richieste degli interessati</h2>
+<p>Per esercitare i diritti relativi ai dati dei pazienti gestiti attraverso un archivio MyClinic, gli interessati devono rivolgersi al professionista o alla struttura sanitaria titolare del relativo trattamento, secondo l&#x27;informativa sanitaria ricevuta. Il distributore non dispone di un archivio centralizzato delle cartelle cliniche dei diversi medici e non può accedere direttamente ai loro dati per soddisfare richieste rivolte al titolare sanitario.</p>
+<p>Per i dati eventualmente comunicati al distributore mediante richieste di assistenza, possono trovare applicazione, secondo il caso, i diritti di accesso, rettifica, cancellazione, limitazione, opposizione e reclamo all&#x27;autorità di controllo. L&#x27;identità completa del relativo titolare e il recapito ufficiale per tali richieste dovranno essere indicati nella versione approvata prima della distribuzione.</p>
+</section>
+<section class="policy-section">
+<h2>Responsabilità del professionista e limiti dell&#x27;informativa</h2>
+<p>Il professionista o la struttura sanitaria determina i trattamenti effettuati nell&#x27;ambito della cura, nel rispetto della normativa applicabile, del segreto professionale e delle adeguate misure organizzative e tecniche. Deve verificare la liceità degli strumenti utilizzati, le modalità di conservazione e condivisione, gli accordi con eventuali fornitori e i diritti dei pazienti.</p>
+<p>Questa informativa relativa al software non sostituisce l&#x27;informativa sanitaria ai pazienti, i consensi specificamente richiesti, le valutazioni del rischio, gli accordi con responsabili del trattamento o gli altri adempimenti previsti dalla normativa nel caso concreto.</p>
+</section>
+<section class="policy-section">
+<h2>Aggiornamenti e versione pubblica</h2>
+<p>Questa versione preparatoria potrà essere aggiornata per riflettere il comportamento verificato del software, i chiarimenti Apple, l&#x27;identità definitiva del distributore e l&#x27;esito della revisione legale. Prima della presentazione sull&#x27;App Store dovranno essere approvati il testo in-app e la versione pubblica, con contenuti sostanzialmente coerenti e data di aggiornamento allineata.</p>
+<p>La versione online è disponibile all&#x27;indirizzo <a href="https://marcosapi96.github.io/app-info/myclinic/privacy/" rel="noopener noreferrer">https://marcosapi96.github.io/app-info/myclinic/privacy/</a> ; la copia integrata nell&#x27;app è consultabile anche offline. L&#x27;assistenza è disponibile all&#x27;indirizzo <a href="https://marcosapi96.github.io/app-info/myclinic/supporto/" rel="noopener noreferrer">https://marcosapi96.github.io/app-info/myclinic/supporto/</a> .</p>
+</section>
+</article>
+<section class="links-section"><h2>Hai bisogno di assistenza?</h2><p>Per domande o problemi tecnici consulta la pagina dedicata al supporto.</p><p><a href="../supporto/">Assistenza e supporto MyClinic</a></p></section>
+</main>
+<footer><span>MyClinic · 2026</span><a href="../supporto/">Assistenza e supporto</a></footer>
+</div>
 </body>
 </html>
